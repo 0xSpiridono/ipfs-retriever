@@ -36,7 +36,7 @@ func (ipfs *IPFS) Retrieve(cid string) error {
 	outputBasePath := os.Getenv("OUTPUT_BASE_PATH")
 
 	fmt.Printf("Fetching a file from the network with CID %s\n", cid)
-	outputPath := outputBasePath
+	outputPath := outputBasePath + "/" + cid
 	icorePath := icorepath.New(cid)
 
 	rootNode, err := ipfs.CoreAPI.Unixfs().Get(ipfs.Context, icorePath)

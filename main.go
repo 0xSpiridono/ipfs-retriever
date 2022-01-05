@@ -16,6 +16,7 @@ func main() {
 
 	ipfs, err := utils.NewIPFS(ctx)
 	if err != nil {
+		println(err)
 		panic(err)
 	}
 
@@ -23,6 +24,9 @@ func main() {
 
 	for _, cid := range cids {
 		err := ipfs.Retrieve(cid)
-		panic(err)
+		if err != nil {
+			println(err)
+			panic(err)
+		}
 	}
 }
